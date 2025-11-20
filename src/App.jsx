@@ -26,24 +26,7 @@ export default function App() {
   const [selectedCategoryForEdit, setSelectedCategoryForEdit] = useState(null);
   const [route, setRoute] = useState("dashboard");
   const [toast, setToast] = useState({ message: "", tone: "info" });
-  console.log(
-    categories,
-    "categories",
-    expenses,
-    "expenses",
-    budgets,
-    "budgets",
-    activeMonth,
-    "activeMonth",
-    showExpenseForm,
-    "showExpenseForm",
-    selectedCategoryForEdit,
-    "selectedCategoryForEdit",
-    route,
-    "route",
-    toast,
-    "toast"
-  );
+
 
   // load data when month changes
   const token = localStorage.getItem("token");

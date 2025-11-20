@@ -1,16 +1,180 @@
-# React + Vite
+# 🎨 Budget Tracker Frontend — React + Vite + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **frontend** of the **Budget Tracker Application**, built using **React + Vite**, **Tailwind CSS**, **Axios**, and **React Router**.  
+It connects to your Node.js backend to manage budgets, expenses, categories, and monthly reports.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
 
-## React Compiler
+🚀 **Frontend Live URL:**  
+https://budget-tracker-frontend-peach.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+📦 **Backend API:**  
+https://budget-tracker-backend-7vqz.onrender.com
 
-## Expanding the ESLint configuration
+📁 **GitHub Repository:**  
+https://github.com/ajps208/Budget_Tracker_Frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features
+
+✔️ User Authentication (Signup & Login)  
+✔️ Dashboard with Month Navigation  
+✔️ Add / Edit / Delete Expenses  
+✔️ Category Management  
+✔️ Monthly Budget Planning  
+✔️ Budget Reports  
+✔️ Fully Responsive (Mobile + Desktop)  
+✔️ Modern UI using TailwindCSS  
+✔️ Vite-powered fast development  
+
+---
+
+## 🧱 Tech Stack
+
+### **Frontend**
+- React.js (Vite)
+- Tailwind CSS
+- Axios
+- React Router DOM
+- Utilities
+
+### **Backend (Connected API)**
+- Node.js + Express.js  
+- MongoDB + Mongoose  
+- JWT Auth  
+
+---
+
+## 📁 Folder Structure
+
+```
+frontend/
+├─ public/
+├─ src/
+│  ├─ components/
+│  │   ├─ Dashboard.jsx
+│  │   ├─ Reports.jsx
+│  │   ├─ Settings.jsx
+│  │   ├─ ExpenseForm.jsx
+│  │   └─ ProtectedRoute.jsx
+│  │
+│  ├─ pages/
+│  │   ├─ Login.jsx
+│  │   └─ Signup.jsx
+│  │
+│  ├─ services/
+│  │   └─ api.js
+│  │
+│  ├─ utils/
+│  │   └─ helpers.js
+│  │
+│  ├─ App.jsx
+│  └─ main.jsx
+│
+├─ .env
+├─ package.json
+└─ README.md
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/ajps208/Budget_Tracker_Frontend
+cd Budget_Tracker_Frontend
+```
+
+### 2️⃣ Install dependencies
+```bash
+npm install
+```
+
+### 3️⃣ Create `.env` file
+```
+VITE_API_URL=https://budget-tracker-backend-7vqz.onrender.com/api
+```
+
+### 4️⃣ Start development server
+```bash
+npm run dev
+```
+
+---
+
+## 🔗 API Integration (Axios Setup)
+
+`src/services/api.js`
+```js
+import axios from "axios";
+
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
+
+// attach token
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+export default API;
+```
+
+---
+
+## 🔐 Protected Routes
+
+Authentication is handled using:
+
+- JWT stored in localStorage  
+- Axios interceptor  
+- `<ProtectedRoute/>` wrapper  
+
+---
+
+## 🧪 Testing the App
+
+You can test the live app here:
+
+🔗 **https://budget-tracker-frontend-peach.vercel.app/**
+
+Or run locally using credentials you created via backend signup.
+
+---
+
+## 🚀 Deployment
+
+The frontend is deployed on **Vercel**.
+
+### Build command
+```bash
+npm run build
+```
+
+### Output directory
+```
+dist/
+```
+
+---
+
+## 📸 Screenshots
+
+![Website Screenshot](./public/img3.png)
+![Website Screenshot](./public/img2.png)
+![Website Screenshot](./public/img1.png)
+
+---
+
+
+## 🙌 Author
+
+**Ajith P S**  
+Full Stack Developer  
+Tech Stack: React · Node.js · Express · MongoDB  
