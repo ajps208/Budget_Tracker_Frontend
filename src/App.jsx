@@ -26,15 +26,35 @@ export default function App() {
   const [selectedCategoryForEdit, setSelectedCategoryForEdit] = useState(null);
   const [route, setRoute] = useState("dashboard");
   const [toast, setToast] = useState({ message: "", tone: "info" });
+  console.log(
+    categories,
+    "categories",
+    expenses,
+    "expenses",
+    budgets,
+    "budgets",
+    activeMonth,
+    "activeMonth",
+    showExpenseForm,
+    "showExpenseForm",
+    selectedCategoryForEdit,
+    "selectedCategoryForEdit",
+    route,
+    "route",
+    toast,
+    "toast"
+  );
 
   // load data when month changes
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    if (!localStorage.getItem("token")) return;
+    if (!token) return;
+
     fetchCategories();
     fetchExpenses(activeMonth);
     fetchBudgets(activeMonth);
-  }, [activeMonth]);
-
+  }, [activeMonth, token]);
   // fetch categories
   async function fetchCategories() {
     const res = await API.get("/categories");
@@ -108,7 +128,6 @@ export default function App() {
             <ProtectedRoute>
               <div className="min-h-screen bg-gray-100 p-3 sm:p-6 pt-16 sm:pt-6">
                 <div className="max-w-6xl mx-auto">
-
                   {/* desktop navbar */}
                   <div className="hidden md:flex bg-white p-4 rounded shadow mb-6 justify-between items-center">
                     <h1 className="text-2xl font-bold">Expense Tracker</h1>
@@ -275,9 +294,7 @@ export default function App() {
 
                   <button
                     className={`flex flex-col items-center text-xs ${
-                      route === "reports"
-                        ? "text-indigo-600"
-                        : "text-gray-500"
+                      route === "reports" ? "text-indigo-600" : "text-gray-500"
                     }`}
                     onClick={() => setRoute("reports")}
                   >
@@ -287,9 +304,7 @@ export default function App() {
 
                   <button
                     className={`flex flex-col items-center text-xs ${
-                      route === "settings"
-                        ? "text-indigo-600"
-                        : "text-gray-500"
+                      route === "settings" ? "text-indigo-600" : "text-gray-500"
                     }`}
                     onClick={() => setRoute("settings")}
                   >
